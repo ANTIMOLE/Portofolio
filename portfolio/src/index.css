@@ -1,0 +1,680 @@
+/* ---------------------------------------------------------------
+   Design tokens
+   Concept: an engineer's field notebook -- paper, hairline rules,
+   a blueprint-blue accent for structure, ochre reserved for the
+   one or two moments that need to read as "measured / flagged".
+----------------------------------------------------------------*/
+:root {
+  --paper: #f1efe7;
+  --paper-raised: #ffffff;
+  --ink: #201e1a;
+  --ink-soft: #55524a;
+  --line: #d9d3c3;
+  --line-strong: #b9b19b;
+
+  --blueprint: #2b4c7e;
+  --blueprint-deep: #1d3557;
+  --blueprint-tint: #dfe6ee;
+
+  --signal: #a8721f;
+  --signal-tint: #f1e3cb;
+
+  --ok: #4c7a5b;
+  --ok-tint: #dfe9e2;
+
+  --font-display: 'Space Grotesk', 'Helvetica Neue', Arial, sans-serif;
+  --font-body: 'Literata', Georgia, 'Times New Roman', serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', Consolas, monospace;
+
+  --content-max: 720px;
+  --wide-max: 980px;
+  --margin-rule: 88px;
+
+  color-scheme: light;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  background-image: linear-gradient(var(--line) 1px, transparent 1px);
+  background-size: 100% 32px;
+  background-position: 0 120px;
+}
+
+@media (max-width: 720px) {
+  body {
+    background-image: none;
+  }
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.12;
+  margin: 0;
+  letter-spacing: -0.01em;
+}
+
+p {
+  margin: 0 0 1em;
+  max-width: 68ch;
+}
+
+a {
+  color: var(--blueprint-deep);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--blueprint);
+  outline-offset: 3px;
+}
+
+button {
+  font-family: inherit;
+}
+
+::selection {
+  background: var(--blueprint-tint);
+  color: var(--blueprint-deep);
+}
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+/* ---------------------------------------------------------------
+   Layout shell -- a fixed left margin rule, like a lab notebook.
+----------------------------------------------------------------*/
+.page {
+  position: relative;
+  max-width: 1180px;
+  margin: 0 auto;
+  padding-left: var(--margin-rule);
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(var(--margin-rule) - 1px);
+  width: 1px;
+  background: var(--line-strong);
+}
+
+@media (max-width: 720px) {
+  :root {
+    --margin-rule: 22px;
+  }
+  .page::before {
+    display: none;
+  }
+}
+
+.section {
+  padding: 5rem 2.5rem 5rem 2.75rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.section:last-of-type {
+  border-bottom: none;
+}
+
+@media (max-width: 720px) {
+  .section {
+    padding: 3.25rem 1.25rem 3.25rem 1.5rem;
+  }
+}
+
+.section__head {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  margin-bottom: 2.25rem;
+}
+
+.section__head h2 {
+  font-size: clamp(1.5rem, 1.1rem + 1.4vw, 2.1rem);
+}
+
+.section__tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.section__intro {
+  color: var(--ink-soft);
+  max-width: 58ch;
+  margin-bottom: 2.5rem;
+}
+
+.container-max {
+  max-width: var(--content-max);
+}
+
+.wide-max {
+  max-width: var(--wide-max);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding: 0.7rem 1.15rem;
+  border-radius: 3px;
+  border: 1px solid var(--ink);
+  text-decoration: none;
+  color: var(--ink);
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.btn--primary {
+  background: var(--blueprint);
+  border-color: var(--blueprint);
+  color: #fff;
+}
+
+.btn--primary:hover {
+  background: var(--blueprint-deep);
+  border-color: var(--blueprint-deep);
+  color: #fff;
+}
+
+/* Tags / pills for stack labels */
+.tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  padding: 0.28rem 0.55rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 3px;
+  color: var(--ink-soft);
+  background: var(--paper-raised);
+  white-space: nowrap;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------
+   Nav
+----------------------------------------------------------------*/
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: color-mix(in srgb, var(--paper) 92%, transparent);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.1rem 2.5rem 1.1rem 2.75rem;
+}
+
+.nav__mark {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  color: var(--ink);
+  border: 1px solid var(--line-strong);
+  padding: 0.3rem 0.55rem;
+  border-radius: 3px;
+}
+
+.nav__list {
+  list-style: none;
+  display: flex;
+  gap: 1.75rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav__list a {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  color: var(--ink);
+  text-decoration: none;
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.15s ease, color 0.15s ease;
+}
+
+.nav__list a:hover {
+  border-color: var(--blueprint);
+  color: var(--blueprint-deep);
+}
+
+@media (max-width: 640px) {
+  .nav__inner {
+    padding: 1rem 1.25rem;
+  }
+  .nav__list {
+    gap: 1rem;
+  }
+  .nav__list a {
+    font-size: 0.82rem;
+  }
+}
+
+/* ---------------------------------------------------------------
+   Hero
+----------------------------------------------------------------*/
+.hero {
+  padding-top: 4rem;
+}
+
+.hero__grid {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .hero__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero__eyebrow {
+  color: var(--blueprint-deep);
+  font-size: 0.82rem;
+  margin-bottom: 1rem;
+}
+
+.hero__name {
+  font-size: clamp(2.1rem, 1.5rem + 2.6vw, 3.4rem);
+  margin-bottom: 1rem;
+}
+
+.hero__role {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  color: var(--ink-soft);
+  max-width: 46ch;
+  margin-bottom: 2rem;
+}
+
+.hero__cta {
+  display: flex;
+  gap: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.hero__panel {
+  background: var(--paper-raised);
+  border: 1px solid var(--line-strong);
+  border-radius: 4px;
+  padding: 1.5rem 1.5rem 1.25rem;
+}
+
+.hero__panel-title {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin: 0 0 0.9rem;
+  text-transform: none;
+}
+
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.log-table thead th {
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  color: var(--ink-soft);
+  font-weight: 400;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.log-row {
+  opacity: 0;
+  animation: log-in 0.4s ease forwards;
+}
+
+@keyframes log-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .log-row {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.log-row td {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--line);
+  vertical-align: baseline;
+}
+
+.log-row:last-child td {
+  border-bottom: none;
+}
+
+.log-id {
+  color: var(--blueprint-deep);
+  font-size: 0.82rem;
+  margin-right: 0.35rem;
+}
+
+.log-metric {
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+  text-align: right;
+  display: block;
+}
+
+.hero__panel-footer {
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px dashed var(--line);
+}
+
+.hero__panel-label {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.5rem;
+}
+
+/* ---------------------------------------------------------------
+   Timeline entries (Experience section)
+----------------------------------------------------------------*/
+.entry-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+}
+
+.entry__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.entry__org {
+  font-size: 1.15rem;
+}
+
+.entry__role {
+  color: var(--blueprint-deep);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  margin: 0.2rem 0 0;
+}
+
+.entry__period {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  white-space: nowrap;
+}
+
+.entry__place {
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+  margin: 0.4rem 0 0.9rem;
+}
+
+.entry__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  max-width: 66ch;
+}
+
+.entry__list li {
+  margin-bottom: 0.5rem;
+}
+
+/* ---------------------------------------------------------------
+   Project case studies
+----------------------------------------------------------------*/
+.case-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.case__head {
+  margin-bottom: 1.25rem;
+}
+
+.case__index {
+  display: inline-block;
+  font-size: 0.78rem;
+  color: var(--signal);
+  background: var(--signal-tint);
+  padding: 0.2rem 0.5rem;
+  border-radius: 3px;
+  margin-bottom: 0.75rem;
+}
+
+.case__head h3 {
+  font-size: clamp(1.25rem, 1.05rem + 0.6vw, 1.55rem);
+  margin-bottom: 0.3rem;
+}
+
+.case__subtitle {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.case p {
+  max-width: 70ch;
+}
+
+.case__tags {
+  margin: 1.25rem 0 1.5rem;
+}
+
+.case__links {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.case__note {
+  font-size: 0.85rem;
+  color: var(--ink-soft);
+  max-width: 60ch;
+}
+
+.scenario-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.6rem;
+  margin: 1.5rem 0;
+  max-width: 640px;
+}
+
+.scenario-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--line);
+  border-radius: 3px;
+  padding: 0.55rem 0.7rem;
+  font-size: 0.88rem;
+  background: var(--paper-raised);
+}
+
+.scenario-chip__id {
+  color: var(--blueprint-deep);
+  font-size: 0.76rem;
+}
+
+/* ---------------------------------------------------------------
+   Skills
+----------------------------------------------------------------*/
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.25rem 3rem;
+}
+
+@media (max-width: 640px) {
+  .skills-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skills-group__title {
+  font-size: 0.85rem;
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--ink-soft);
+  margin-bottom: 0.8rem;
+}
+
+.skills-footer {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2.25rem 3rem;
+  margin-top: 3rem;
+  padding-top: 2.25rem;
+  border-top: 1px solid var(--line);
+}
+
+@media (max-width: 640px) {
+  .skills-footer {
+    grid-template-columns: 1fr;
+  }
+}
+
+.skills-footer__text {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+}
+
+/* ---------------------------------------------------------------
+   Footer
+----------------------------------------------------------------*/
+.footer {
+  padding-bottom: 4rem;
+}
+
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+@media (max-width: 720px) {
+  .footer__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.footer__lead {
+  font-size: 1.05rem;
+  max-width: 42ch;
+}
+
+.footer__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 0.92rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer__list a {
+  text-decoration: none;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.footer__list a:hover {
+  color: var(--blueprint-deep);
+  border-color: var(--blueprint-deep);
+}
+
+.footer__bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+  padding-top: 2rem;
+  border-top: 1px solid var(--line);
+}
+
+.footer__copy {
+  color: var(--ink-soft);
+  font-size: 0.8rem;
+}
