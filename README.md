@@ -1,81 +1,102 @@
 # Angello Khara Sitanggang — Portfolio
 
-React + TypeScript + Vite, no UI framework — hand-written CSS so it doesn't
-look like every other template. Single page, five sections: hero, about,
-experience, work (2 case studies), skills, contact.
+Personal portfolio built with React, TypeScript, and Vite.
 
-## Run it locally
+## About
 
+This portfolio contains my experience, projects, education, and technical skills. It focuses mainly on backend and full-stack development, along with projects I've worked on during university and practical work.
+
+## Projects
+
+### SIAKAD
+
+Academic Information System built for STT Diakonos. The system covers KRS, grades, attendance, and payments for admin, lecturer, student, and finance roles.
+
+### ZENIT E-COMMERCE
+
+A research project focused on comparing API performance and behavior under different scenarios.
+
+## Experience
+
+### STT Diakonos
+
+SIAKAD Development — Practical Work Project
+Jan 2026 – Mar 2026
+
+Built and deployed a web-based Academic Information System and supported the deployment to the school's infrastructure.
+
+### Kelompok Studi Pemrograman UAJY
+
+Member & Event Committee
+Aug 2023 – Jun 2024
+
+Participated in programming competitions, helped organize events and workshops, and mentored members on programming fundamentals and algorithms.
+
+## Education
+
+Universitas Atma Jaya Yogyakarta
+Bachelor of Informatics — Software Development Engineering
+Jul 2022 – Jul 2026
+
+GPA: 3.84 / 4.00 (Cum Laude)
+
+Final project: an e-commerce application used to compare REST API and tRPC performance with load testing using k6.
+
+## Stack
+
+* React
+* TypeScript
+* JavaScript
+* Next.js
+* Node.js
+* Express.js
+* tRPC
+* Prisma
+* PostgreSQL
+* MySQL
+* Redis
+* Docker
+* AWS Lightsail
+* Git / GitHub
+
+## Project Structure
+
+```text
+src/
+├── components/
+├── data.ts
+├── index.css
+└── main.tsx
 ```
+
+Most portfolio content is stored in `src/data.ts`, including personal information, experience, education, skills, and project links.
+
+## Development
+
+Install dependencies:
+
+```bash
 npm install
+```
+
+Run locally:
+
+```bash
 npm run dev
 ```
 
-## Before you deploy — 3 links to fill in
+Build for production:
 
-Open `src/data.ts`. Three placeholders need your real GitHub info:
-
-CARI:
-```
-export const GITHUB_USERNAME = 'your-github-username' // GANTI
-```
-GANTI:
-```
-export const GITHUB_USERNAME = 'angellokhs'  // <- your actual GitHub username
+```bash
+npm run build
 ```
 
-CARI:
-```
-export const SIAKAD_REPO_URL = 'https://github.com/your-github-username/siakad-diakonos' // GANTI
-```
-GANTI: point it at the actual SIAKAD repo URL (make it public, or this link will 404 for visitors).
+## Deployment
 
-CARI:
-```
-export const ZENIT_REPO_URL = 'https://github.com/your-github-username/zenit' // GANTI
-```
-GANTI: point it at the actual ZENIT/thesis repo URL.
+The project uses GitHub Pages for deployment through GitHub Actions.
 
-Everything else in `data.ts` (email, phone, LinkedIn, the SIAKAD live URL) is
-already filled in from your CV — check it's still current before you deploy.
+The deployment workflow is located at:
 
-The CV file itself is `public/Angello-Khara-Sitanggang-CV.pdf` — replace that
-file (keep the same name, or update `CV_PATH` in `data.ts`) whenever you
-update your resume.
-
-## Deploy to GitHub Pages
-
-1. Create a new GitHub repo (e.g. `portfolio`) and push this project to it:
-   ```
-   git init
-   git add .
-   git commit -m "portfolio site"
-   git branch -M main
-   git remote add origin https://github.com/<your-username>/<repo-name>.git
-   git push -u origin main
-   ```
-2. On GitHub: **Settings → Pages → Build and deployment → Source → GitHub
-   Actions**. That's it — the workflow in `.github/workflows/deploy.yml`
-   builds and deploys on every push to `main`.
-3. Your site will be live at `https://<your-username>.github.io/<repo-name>/`
-   after the first Action run finishes (check the **Actions** tab).
-
-`vite.config.ts` uses a relative base path (`base: './'`), so it works at
-that subpath without any extra config — no need to touch it, even if you
-rename the repo.
-
-## Project structure
-
-```
-src/
-  data.ts           all real content lives here — edit this, not the components
-  components/
-    Nav.tsx
-    Hero.tsx
-    About.tsx
-    Experience.tsx  work history + org experience + education, one timeline
-    Projects.tsx     the two case studies
-    Skills.tsx
-    Footer.tsx
-  index.css          all styling — design tokens at the top
+```text
+.github/workflows/deploy.yml
 ```
