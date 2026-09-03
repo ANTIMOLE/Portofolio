@@ -13,7 +13,7 @@ export const EMAIL = 'angellokhara4672@gmail.com'
 export const PHONE = '+62 823-1475-6791'
 export const LOCATION = 'Sleman, Yogyakarta, Indonesia'
 export const LINKEDIN_URL = 'https://www.linkedin.com/in/angello-sitanggang-062567195/'
-export const CV_PATH = './Angello-Khara-Sitanggang-CV.pdf'
+export const CV_PATH = './Angello-Khara-Sitanggang - CV.pdf'
 export const SIAKAD_LIVE_URL = 'http://52.74.11.77/'
 export const ZENIT_LIVE_URL = 'http://54.251.148.232/'
 
