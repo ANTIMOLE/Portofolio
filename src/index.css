@@ -3,7 +3,9 @@
    Concept: an engineer's field notebook -- paper, hairline rules,
    a blueprint-blue accent for structure, ochre reserved for the
    one or two moments that need to read as "measured / flagged".
+   
 ----------------------------------------------------------------*/
+
 :root {
   --paper: #f1efe7;
   --paper-raised: #ffffff;
@@ -65,6 +67,65 @@ body {
   background-image: linear-gradient(var(--line) 1px, transparent 1px);
   background-size: 100% 32px;
   background-position: 0 120px;
+}
+
+/* Hide the toggle button on desktop */
+.nav__toggle {
+  display: none;
+}
+
+/* Show the toggle button only on mobile */
+@media (max-width: 640px) {
+  .nav__toggle {
+    display: block;
+  }
+}
+
+@media (max-width: 640px) {
+
+  /* Make the inner container relative so we can position the menu against it */
+  .nav__inner {
+    position: relative;
+  }
+
+  /* The menu itself */
+  .nav__menu {
+    display: none;
+    position: absolute;
+    top: 100%;          /* right under the header */
+    left: 0;
+    right: 0;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding: 0.5rem 1.25rem 1.25rem;
+    z-index: 30;
+  }
+
+  .nav__menu.is-open {
+    display: inline-block;
+  }
+
+  /* Vertical list styling */
+  .nav__list {
+    flex-direction: column;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav__list li {
+    border-bottom: 1px solid var(--line);
+  }
+
+  .nav__list li:last-child {
+    border-bottom: none;
+  }
+
+  .nav__list a {
+    display: block;
+    padding: 0.95rem 0;
+    font-size: 1rem;
+  }
 }
 
 @media (max-width: 720px) {
