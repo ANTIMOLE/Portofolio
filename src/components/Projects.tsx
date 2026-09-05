@@ -27,15 +27,15 @@ export default function Projects() {
             The backend is a separate Express.js service with Prisma and MySQL, structured as a monorepo.
           </p>
           <p>
-            I packaged everything into a single Docker container (Next.js served from inside
-            the Express process, together with MySQL ), tested it on AWS Lightsail,
-            then moved it to the school’s VPS at{' '}
-            <span className="mono">siakad.sttdiakonos.ac.id</span>.
-            I handed the system over and stayed involved during deployment for support.
+            I handed over the complete source code and project documentation to the school.
+            For demonstration purposes, I deployed a demo version of the system on AWS Lightsail
+            using dummy data, not the school's actual campus data. I also provided deployment
+            support and remained involved during the handover process.
           </p>
 
+
           <div className="tag-row case__tags">
-            {['Next.js', 'TypeScript', 'Tailwind', 'shadcn/ui', 'Express.js', 'Prisma', 'MySQL', 'Docker', 'AWS Lightsail'].map(
+            {['Next.js 16', 'TypeScript', 'Tailwind CSS 4', 'shadcn/ui', 'Express 5', 'Prisma 6', 'MySQL', 'Docker', 'Caddy', 'AWS Lightsail'].map(
               (t) => (
                 <span key={t} className="tag">
                   {t}
@@ -52,39 +52,39 @@ export default function Projects() {
               Visit live site
             </a>
           </div>
-            <p className="case__note">
-              This is an academic system, so the live link directs you to the sign-in page.
-              Since this is a demo environment and not the actual website used by the school,
-              you can log in using one of the following demo accounts:
+          <p className="case__note">
+            This is an academic system, so the live link directs you to the sign-in page.
+            Since this is a demo environment and not the actual website used by the school,
+            you can log in using one of the following demo accounts:
 
-              <br /><br />
-              <strong>Admin</strong>
-              <br />
-              Username: <strong>admin</strong>
-              <br />
-              Password: <strong>Demo@2026</strong>
+            <br /><br />
+            <strong>Admin</strong>
+            <br />
+            Username: <strong>admin</strong>
+            <br />
+            Password: <strong>Demo@2026</strong>
 
-              <br /><br />
-              <strong>User</strong>
-              <br />
-              Username: <strong>11.21.142</strong>
-              <br />
-              Password: <strong>Demo@2026</strong>
+            <br /><br />
+            <strong>User</strong>
+            <br />
+            Username: <strong>11.21.142</strong>
+            <br />
+            Password: <strong>Demo@2026</strong>
 
-              <br /><br />
-              <strong>Keuangan</strong>
-              <br />
-              Username: <strong>keuangan</strong>
-              <br />
-              Password: <strong>Demo@2026</strong>
+            <br /><br />
+            <strong>Keuangan</strong>
+            <br />
+            Username: <strong>keuangan</strong>
+            <br />
+            Password: <strong>Demo@2026</strong>
 
-              <br /><br />
-              <strong>Dosen</strong>
-              <br />
-              Username: <strong>6574487272</strong>
-              <br />
-              Password: <strong>Demo@2026</strong>
-            </p>
+            <br /><br />
+            <strong>Dosen</strong>
+            <br />
+            Username: <strong>6574487272</strong>
+            <br />
+            Password: <strong>Demo@2026</strong>
+          </p>
         </article>
 
         {/* Case 02 — ZENIT */}
