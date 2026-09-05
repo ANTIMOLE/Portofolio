@@ -55,9 +55,33 @@ export default function Projects() {
             <p className="case__note">
               This is an academic system, so the live link directs you to the sign-in page.
               Since this is a demo environment and not the actual website used by the school,
-              you can log in using the following credentials:
+              you can log in using one of the following demo accounts:
+
+              <br /><br />
+              <strong>Admin</strong>
               <br />
               Username: <strong>admin</strong>
+              <br />
+              Password: <strong>Demo@2026</strong>
+
+              <br /><br />
+              <strong>User</strong>
+              <br />
+              Username: <strong>11.21.142</strong>
+              <br />
+              Password: <strong>Demo@2026</strong>
+
+              <br /><br />
+              <strong>Keuangan</strong>
+              <br />
+              Username: <strong>keuangan</strong>
+              <br />
+              Password: <strong>Demo@2026</strong>
+
+              <br /><br />
+              <strong>Dosen</strong>
+              <br />
+              Username: <strong>6574487272</strong>
               <br />
               Password: <strong>Demo@2026</strong>
             </p>
