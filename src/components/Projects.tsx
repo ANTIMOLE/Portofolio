@@ -52,9 +52,15 @@ export default function Projects() {
               Visit live site
             </a>
           </div>
-          <p className="case__note">
-            This is a real academic system, so the live link goes to the sign-in page.
-          </p>
+            <p className="case__note">
+              This is an academic system, so the live link directs you to the sign-in page.
+              Since this is a demo environment and not the actual website used by the school,
+              you can log in using the following credentials:
+              <br />
+              Username: <strong>admin</strong>
+              <br />
+              Password: <strong>Demo@2026</strong>
+            </p>
         </article>
 
         {/* Case 02 — ZENIT */}
