@@ -28,14 +28,14 @@ export default function Projects() {
           </p>
           <p>
             I packaged everything into a single Docker container (Next.js served from inside
-            the Express process, together with MySQL and Caddy), tested it on AWS Lightsail,
+            the Express process, together with MySQL ), tested it on AWS Lightsail,
             then moved it to the school’s VPS at{' '}
             <span className="mono">siakad.sttdiakonos.ac.id</span>.
             I handed the system over and stayed involved during deployment for support.
           </p>
 
           <div className="tag-row case__tags">
-            {['Next.js', 'TypeScript', 'Tailwind', 'shadcn/ui', 'Express.js', 'Prisma', 'MySQL', 'Docker', 'Caddy', 'AWS Lightsail'].map(
+            {['Next.js', 'TypeScript', 'Tailwind', 'shadcn/ui', 'Express.js', 'Prisma', 'MySQL', 'Docker', 'AWS Lightsail'].map(
               (t) => (
                 <span key={t} className="tag">
                   {t}
@@ -64,70 +64,77 @@ export default function Projects() {
         </article>
 
         {/* Case 02 — ZENIT */}
-        <article className="case">
-          <div className="case__head">
-            <span className="case__index mono">Case 02</span>
-            <h3>ZENIT — REST API vs tRPC under load</h3>
-            <p className="case__subtitle">Final thesis (Tugas Akhir)</p>
-          </div>
+          <article className="case">
+            <div className="case__head">
+              <span className="case__index mono">Case 02</span>
+              <h3>ZENIT — REST API vs tRPC under load</h3>
+              <p className="case__subtitle">Final thesis (Tugas Akhir)</p>
+            </div>
 
-          <p>
-            REST and tRPC are often compared in theory. For my thesis I wanted actual numbers,
-            so I built ZENIT — an e-commerce app implemented twice (once with REST, once with tRPC)
-            on the same Next.js + Express.js base — then ran both through identical k6 load tests
-            across five scenarios.
-          </p>
+            <p>
+              REST and tRPC are often compared in theory. For my thesis I wanted actual numbers,
+              so I built ZENIT, an e-commerce app implemented twice, once with REST and once with
+              tRPC, on the same Next.js and Express.js base. Both versions then ran through
+              identical k6 load tests across five scenarios.
+            </p>
 
-          <div className="scenario-grid">
-            {ZENIT_SCENARIOS.map((s) => (
-              <div key={s.id} className="scenario-chip">
-                <span className="mono scenario-chip__id">{s.id}</span>
-                <span>{s.name}</span>
-              </div>
-            ))}
-          </div>
+            <div className="scenario-grid">
+              {ZENIT_SCENARIOS.map((s) => (
+                <div key={s.id} className="scenario-chip">
+                  <span className="mono scenario-chip__id">{s.id}</span>
+                  <span>{s.name}</span>
+                </div>
+              ))}
+            </div>
 
-          <p>
-            Each scenario was tested under four load conditions: step-up ({ZENIT_CONDITIONS[0].n}),
-            stress ({ZENIT_CONDITIONS[1].n}), spike ({ZENIT_CONDITIONS[2].n}), and soak (
-            {ZENIT_CONDITIONS[3].n}). I measured response time, P95/P99, throughput, error rate,
-            CPU, and RAM usage. The results were processed with a Python pipeline using
-            Shapiro-Wilk, paired t-tests / Wilcoxon signed-rank, Cohen’s d, and bootstrap
-            confidence intervals.
-          </p>
+            <p>
+              Each scenario was tested under four load conditions: step-up ({ZENIT_CONDITIONS[0].n}),
+              stress ({ZENIT_CONDITIONS[1].n}), spike ({ZENIT_CONDITIONS[2].n}), and soak (
+              {ZENIT_CONDITIONS[3].n}). I measured response time, P95/P99, throughput, error rate,
+              CPU, and RAM usage. The results were processed with a Python pipeline using
+              Shapiro-Wilk for normality, paired t-tests and Wilcoxon signed-rank where the data
+              called for it, Cohen's d for effect size, and bootstrap confidence intervals to keep
+              the small sample sizes honest.
+            </p>
 
-          <div className="tag-row case__tags">
-            {['Next.js', 'Express.js', 'tRPC', 'PostgreSQL', 'Redis', 'k6', 'Python', 'pandas'].map((t) => (
-              <span key={t} className="tag">
-                {t}
-              </span>
-            ))}
-          </div>
+            <p>
+              Both backends run on the same DigitalOcean VPS, managed with PM2 and sitting behind an
+              Nginx reverse proxy, so the comparison runs under identical conditions. Redis caches
+              product and category queries only, not sessions, so it doesn't distort the numbers.
+              Both REST and tRPC authenticate with an httpOnly cookie, the tRPC context reads it the
+              same way the REST middleware does, so auth isn't a variable between the two.
+            </p>
 
-          <div className="case__links">
-            <a className="btn" href={ZENIT_REPO_URL} target="_blank" rel="noreferrer">
-              View code
-            </a>
-            <a className="btn" href={ZENIT_LIVE_URL} target="_blank" rel="noreferrer">
-              Visit live site
-            </a>
-          </div>
-          <p className="case__note">
-            This is a demo environment. You can log in with the admin account below,
-            or register a new account / use the demo user account.
+            <div className="tag-row case__tags">
+              {['Next.js 14', 'Express.js', 'tRPC v11', 'Prisma', 'PostgreSQL', 'Redis', 'PM2', 'Nginx', 'k6', 'Python'].map((t) => (
+                <span key={t} className="tag">
+                  {t}
+                </span>
+              ))}
+            </div>
 
-            <br />
-            Admin: <strong>admin1@zenit.dev</strong>
-            <br />
-            Password: <strong>Password123!</strong>
-
-            <br /><br />
-            Demo User: <strong>aditya.latif9999@hotmail.com</strong>
-            <br />
-            Password: <strong>Password123!</strong>
-          </p>
-
-        </article>
+            <div className="case__links">
+              <a className="btn" href={ZENIT_REPO_URL} target="_blank" rel="noreferrer">
+                View code
+              </a>
+              <a className="btn" href={ZENIT_LIVE_URL} target="_blank" rel="noreferrer">
+                Visit live site
+              </a>
+            </div>
+            <p className="case__note">
+              This is a demo environment. You can log in with the admin account below,
+              or register a new account / use the demo user account.
+              <br />
+              Admin: <strong>admin1@zenit.dev</strong>
+              <br />
+              Password: <strong>Password123!</strong>
+              <br />
+              <br />
+              Demo User: <strong>aditya.latif9999@hotmail.com</strong>
+              <br />
+              Password: <strong>Password123!</strong>
+            </p>
+          </article>
       </div>
     </section>
   )

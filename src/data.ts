@@ -61,7 +61,7 @@ export const EXPERIENCE = {
   period: 'Jan 2026 – Mar 2026',
   bullets: [
     'Built a complete web-based Academic Information System (SIAKAD) that handles KRS, grades, attendance, and payments for four roles: admin, lecturer, student, and finance staff.',
-    'Packaged the entire system into a single Docker container (Next.js frontend served directly from the Express process, together with MySQL and Caddy) and tested the setup on AWS Lightsail before moving it to the school’s own VPS.',
+    'Packaged the entire system into a single Docker container (Next.js frontend served directly from the Express process, together with MySQL) and tested the setup on AWS Lightsail before moving it to the school’s own VPS.',
     'Delivered the finished system to the school and stayed involved through the deployment phase to provide technical support.',
   ],
 }
