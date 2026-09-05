@@ -113,8 +113,20 @@ export default function Projects() {
             </a>
           </div>
           <p className="case__note">
-            The full write-up (methodology, statistical tests, and results) is in the thesis document.
+            This is a demo environment. You can log in with the admin account below,
+            or register a new account / use the demo user account.
+
+            <br />
+            Admin: <strong>admin1@zenit.dev</strong>
+            <br />
+            Password: <strong>Password123!</strong>
+
+            <br /><br />
+            Demo User: <strong>aditya.latif9999@hotmail.com</strong>
+            <br />
+            Password: <strong>Password123!</strong>
           </p>
+
         </article>
       </div>
     </section>
