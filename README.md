@@ -16,6 +16,10 @@ Academic Information System built for STT Diakonos. The system covers KRS, grade
 
 A research project focused on comparing API performance and behavior under different scenarios.
 
+### PLUGIN TOKO KOPI
+
+A responsive coffee catalog website with product detail pages and an order flow that prepares product details for confirmation through WhatsApp.
+
 ## Experience
 
 ### STT Diakonos

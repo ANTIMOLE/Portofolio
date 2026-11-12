@@ -1,4 +1,4 @@
-import { SIAKAD_LIVE_URL, SIAKAD_REPO_URL, ZENIT_CONDITIONS, ZENIT_LIVE_URL, ZENIT_REPO_URL, ZENIT_SCENARIOS } from '../data'
+import { PLUGIN_REPO_URL, SIAKAD_LIVE_URL, SIAKAD_REPO_URL, ZENIT_CONDITIONS, ZENIT_LIVE_URL, ZENIT_REPO_URL, ZENIT_SCENARIOS } from '../data'
 
 export default function Projects() {
   return (
@@ -7,8 +7,8 @@ export default function Projects() {
         <h2>Selected work</h2>
       </div>
       <p className="section__intro">
-        Two projects I worked on in depth: a full academic system for a real school,
-        and a final thesis experiment comparing REST and tRPC under load.
+        Three projects spanning a full academic system, an API performance study,
+        and a coffee catalog website built for Plugin.
       </p>
 
       <div className="wide-max case-list">
@@ -159,6 +159,42 @@ export default function Projects() {
               Password: <strong>Password123!</strong>
             </p>
           </article>
+
+        {/* Case 03 — PLUGIN TOKO KOPI */}
+        <article className="case">
+          <div className="case__head">
+            <span className="case__index mono">Case 03</span>
+            <h3>PLUGIN — Coffee Catalog Website</h3>
+            <p className="case__subtitle">A digital storefront for Plugin Toko Kopi</p>
+          </div>
+
+          <p>
+            Built a responsive storefront for Plugin Toko Kopi to present its coffee beans,
+            blends, and cold brew. Visitors can browse product categories, open product detail
+            pages, and review available size, price, and product information before ordering.
+          </p>
+
+          <p>
+            The site also includes brand and contact pages, a product carousel, and an order
+            flow that prepares details for confirmation through WhatsApp. The catalog is
+            maintained as local project data, keeping the shopping experience focused on
+            browsing and direct customer contact.
+          </p>
+
+          <div className="tag-row case__tags">
+            {['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS 4', 'Responsive UI', 'WhatsApp ordering'].map((t) => (
+              <span key={t} className="tag">
+                {t}
+              </span>
+            ))}
+          </div>
+
+          <div className="case__links">
+            <a className="btn" href={PLUGIN_REPO_URL} target="_blank" rel="noreferrer">
+              View code
+            </a>
+          </div>
+        </article>
       </div>
     </section>
   )
