@@ -1,4 +1,4 @@
-import { PLUGIN_REPO_URL, SIAKAD_LIVE_URL, SIAKAD_REPO_URL, ZENIT_CONDITIONS, ZENIT_LIVE_URL, ZENIT_REPO_URL, ZENIT_SCENARIOS } from '../data'
+import { PLUGIN_LIVE_URL, SIAKAD_LIVE_URL, ZENIT_CONDITIONS, ZENIT_LIVE_URL, ZENIT_REPO_URL, ZENIT_SCENARIOS } from '../data'
 
 export default function Projects() {
   return (
@@ -45,9 +45,9 @@ export default function Projects() {
           </div>
 
           <div className="case__links">
-            <a className="btn" href={SIAKAD_REPO_URL} target="_blank" rel="noreferrer">
+            {/* <a className="btn" href={SIAKAD_REPO_URL} target="_blank" rel="noreferrer">
               View code
-            </a>
+            </a> */}
             <a className="btn" href={SIAKAD_LIVE_URL} target="_blank" rel="noreferrer">
               Visit live site
             </a>
@@ -190,8 +190,11 @@ export default function Projects() {
           </div>
 
           <div className="case__links">
-            <a className="btn" href={PLUGIN_REPO_URL} target="_blank" rel="noreferrer">
+            {/* <a className="btn" href={PLUGIN_REPO_URL} target="_blank" rel="noreferrer">
               View code
+            </a> */}
+            <a className="btn" href={PLUGIN_LIVE_URL} target="_blank" rel="noreferrer">
+              Visit live site
             </a>
           </div>
         </article>

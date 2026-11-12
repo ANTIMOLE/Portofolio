@@ -6,6 +6,7 @@ export const GITHUB_URL = `https://github.com/${GITHUB_USERNAME}`
 export const SIAKAD_REPO_URL = 'https://github.com/ANTIMOLE/STT-DIAKONOS' // GANTI
 export const ZENIT_REPO_URL = 'https://github.com/ANTIMOLE/ZENIT_VPS_TA' // GANTI
 export const PLUGIN_REPO_URL = 'https://github.com/ANTIMOLE/plugin-toko-kopi'
+export const PLUGIN_LIVE_URL = 'https://plugincoffee.my.id/'
 
 // Already real, pulled from the resume — leave as is unless something changed.
 export const FULL_NAME = 'Angello Khara Sitanggang'
